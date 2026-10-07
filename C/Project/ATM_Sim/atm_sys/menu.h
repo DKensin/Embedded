@@ -1,1 +1,1 @@
-void menu(void);
+void show_menu(void);

@@ -1,3 +1,3 @@
 /*declare function that used in main.c*/
-int enter_pos();
-int display_value();
+int enter_arr();
+int print_arr();

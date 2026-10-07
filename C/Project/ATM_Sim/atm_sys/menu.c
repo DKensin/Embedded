@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include <stdbool.h> /*tell the complier to include the stdio.h header file*/
+#include <stdbool.h>
 #include "array.h"
 
-void display_menu(void)
+static void display_menu(void)
 {
     printf("======ARRAY OPERANTION=========\n");
     printf("1. Enter position\n");
@@ -11,7 +11,7 @@ void display_menu(void)
     printf("Enter your choice (1-3): ");
 }
 
-void menu(void)
+void show_menu(void)
 {
     int choice;
     int pos;
@@ -21,26 +21,42 @@ void menu(void)
     do
     {
         display_menu();
-        scanf("%d", &choice);
+        if(scanf("%d", &choice) != 1)
+        {
+            printf("Invalid input! Please enter a number (1-3)\n");
+
+            while (getchar() != '\n');
+            continue;
+        }
 
         switch (choice)
         {
         case 1:
             printf("Enter position: ");
-            scanf("%d", &pos);
+            if(scanf("%d", &pos) != 1)
+            {
+                printf("Invalid number!\n");
+                while (getchar() != '\n');
+                break;
+            }
             printf("Enter value: ");
-            scanf("%d", &value);
-            if (enter_pos(pos, value))
+            if(scanf("%d", &value) != 1)
+            {
+                printf("Invalid number!\n");
+                while (getchar() != '\n');
+                break;
+            }
+            if (enter_arr(pos, value))
             {
                 printf("Added successfull\n");
             }
             else
             {
-                printf("Position already has a value\n");
+                printf("Position already or invalid position\n");
             }
             break;
         case 2:
-            display_value();
+            print_arr();
             printf("\n");
             break;
         case 3:

@@ -3,12 +3,17 @@
 
 #define SIZE        10
 
-int arr[SIZE] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+static int arr[SIZE] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 
-bool enter_pos(int pos, int value)
+bool enter_arr(int pos, int value)
 {
     bool result = false; //duplicate position
-    if (0xFF == arr[pos])
+
+    if (pos < 0 || pos >= SIZE)
+    {
+        return false;
+    }
+    else if (0xFF == arr[pos])
     {
         arr[pos] = value;
         result = true;
@@ -17,7 +22,7 @@ bool enter_pos(int pos, int value)
     return result;
 }
 
-void display_value(void)
+void print_arr(void)
 {
     printf("Printed value: ");
 
