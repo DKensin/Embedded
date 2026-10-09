@@ -4,11 +4,25 @@
 
 static void display_menu(void)
 {
-    printf("======ARRAY OPERANTION=========\n");
+    printf("======ARRAY OPERATION=========\n");
     printf("1. Enter position\n");
     printf("2. Display value\n");
     printf("3. Quit\n");
     printf("Enter your choice (1-3): ");
+}
+
+static int get_number(void)
+{
+    int number_input;
+    char next_char;
+
+    while (scanf("%d%c", &number_input, &next_char) != 2 || next_char != '\n')
+    {
+        printf("Input value. Please try again\n");
+        while (getchar() != '\n');
+    }
+
+    return number_input;
 }
 
 void show_menu(void)
@@ -21,51 +35,36 @@ void show_menu(void)
     do
     {
         display_menu();
-        if(scanf("%d", &choice) != 1)
-        {
-            printf("Invalid input! Please enter a number (1-3)\n");
-
-            while (getchar() != '\n');
-            continue;
-        }
+        choice = get_number();
 
         switch (choice)
         {
         case 1:
             printf("Enter position: ");
-            if(scanf("%d", &pos) != 1)
-            {
-                printf("Invalid number!\n");
-                while (getchar() != '\n');
-                break;
-            }
+            pos = get_number();
+
             printf("Enter value: ");
-            if(scanf("%d", &value) != 1)
+            value = get_number();
+
+            if (enter_array(pos, value))
             {
-                printf("Invalid number!\n");
-                while (getchar() != '\n');
-                break;
-            }
-            if (enter_arr(pos, value))
-            {
-                printf("Added successfull\n");
+                printf("Added successfull\n\n");
             }
             else
             {
-                printf("Position already or invalid position\n");
+                printf("Position already or invalid position\n\n");
             }
             break;
         case 2:
-            print_arr();
-            printf("\n");
+            print_array();
+            printf("\n\n");
             break;
         case 3:
             run = 0;
             break;
         default:
-            printf("Please enter value(1-3): \n");
+            printf("Please enter value(1-3) \n\n");
             break;
         }
-
     } while (run);
 }

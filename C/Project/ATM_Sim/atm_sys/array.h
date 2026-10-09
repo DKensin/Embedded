@@ -1,3 +1,12 @@
-/*declare function that used in main.c*/
-int enter_arr();
-int print_arr();
+/**
+ * @brief           Adds a new value to the array at a specific position
+ *
+ * @param   pos     The index in the array
+ * @param   value   The value to insert
+ */
+bool enter_array(int pos, int value);
+
+/**
+ * @brief           Prints all values currently stored in the array
+ */
+void print_array(void);

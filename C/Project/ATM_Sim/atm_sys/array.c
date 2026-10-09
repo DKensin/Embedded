@@ -5,26 +5,24 @@
 
 static int arr[SIZE] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
 
-bool enter_arr(int pos, int value)
+bool enter_array(int pos, int value)
 {
-    bool result = false; //duplicate position
+    bool result = false;
 
-    if (pos < 0 || pos >= SIZE)
+    if ((pos >= 0) && (pos < SIZE))
     {
-        return false;
+        if (0xFF == arr[pos])
+        {
+            arr[pos] = value;
+            result = true;
+        }
     }
-    else if (0xFF == arr[pos])
-    {
-        arr[pos] = value;
-        result = true;
-    }
-
     return result;
 }
 
-void print_arr(void)
+void print_array(void)
 {
-    printf("Printed value: ");
+    printf("Current value:: ");
 
     for (int i = 0; i < SIZE; i++)
     {
