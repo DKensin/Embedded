@@ -1,5 +1,5 @@
 /**
- * @brief           Adds a new value to the array at a specific position
+ * @brief           Adds a value to the array at a specific position
  *
  * @param   pos     The index in the array
  * @param   value   The value to insert

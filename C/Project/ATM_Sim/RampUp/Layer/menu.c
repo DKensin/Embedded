@@ -2,9 +2,9 @@
 #include <stdbool.h>
 #include "array.h"
 
-static void display_menu(void)
+static void display_option(void)
 {
-    printf("======ARRAY OPERATION=========\n");
+    printf("====== ARRAY OPERATION =========\n");
     printf("1. Enter position\n");
     printf("2. Display value\n");
     printf("3. Quit\n");
@@ -13,16 +13,16 @@ static void display_menu(void)
 
 static int get_number(void)
 {
-    int number_input;
-    char next_char;
+    int number;
+    char c;
 
-    while (scanf("%d%c", &number_input, &next_char) != 2 || next_char != '\n')
+    while ((scanf("%d%c", &number, &c) != 2) || (c != '\n'))
     {
         printf("Input value. Please try again\n");
         while (getchar() != '\n');
     }
 
-    return number_input;
+    return number;
 }
 
 void show_menu(void)
@@ -34,7 +34,7 @@ void show_menu(void)
 
     do
     {
-        display_menu();
+        display_option();
         choice = get_number();
 
         switch (choice)
