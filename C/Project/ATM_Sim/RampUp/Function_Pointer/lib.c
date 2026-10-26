@@ -11,6 +11,7 @@ void register_operation(void (*ptr)(void))
 {
     local_ptr = ptr;
 }
+
 void operation(void)
 {
     local_ptr();
